@@ -2,11 +2,6 @@ module MyMatching
 
 export deferred_acceptance
 
-function deferred_acceptance(m_prefs::Vector{Vector{Int}},
-                             f_prefs::Vector{Vector{Int}})
-    return deferred_acceptance(m_prefs_2d, f_prefs_2d)
-end
-
 function deferred_acceptance(m_prefs,f_prefs)
     m_size = size(m_prefs,2)
     f_size = size(f_prefs,2)
