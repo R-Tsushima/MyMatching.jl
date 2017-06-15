@@ -15,7 +15,7 @@ function deferred_acceptance(m_prefs::Vector{Vector{Int}},f_prefs::Vector{Vector
             end
             if m_matched[i] == 0 && m_prp[i] <= length(m_prefs[i])
                 if f_matched[m_prefs[i][m_prp[i]]] == 0
-                    if findfirst(f_prefs[m_prefs[i]][m_prp[i]], i) == 0
+                    if findfirst(f_prefs[m_prefs[i][m_prp[i]]], i) == 0
                         f_matched[m_prefs[i][m_prp[i]]] = 0
                         m_matched[i] = 0
                         m_prp[i]+=1
