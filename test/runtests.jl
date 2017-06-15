@@ -1,7 +1,7 @@
 using MyMatching
 using Base.Test
 
-const _deferred_acceptance = deferred_acceptance
+const _deferred_acceptance = my_deferred_acceptance
 
 function mat2vecs{T<:Integer}(prefs::Matrix{T})
     return [prefs[1:findfirst(prefs[:, j], 0)-1, j] for j in 1:size(prefs, 2)]
@@ -97,22 +97,6 @@ end
         for d in matchings_one_to_one
             # Convert Matrix to Vector{Vector}
             m_prefs, f_prefs = mat2vecs.([d["m_prefs"], d["f_prefs"]])
-
-            # Male proposal
-            m_matches, f_matches = _deferred_acceptance(m_prefs, f_prefs)
-            @test m_matches == d["m_matches_m_opt"]
-            @test f_matches == d["f_matches_m_opt"]
-
-            # Female proposal
-            f_matches, m_matches = _deferred_acceptance(f_prefs, m_prefs)
-            @test m_matches == d["m_matches_f_opt"]
-            @test f_matches == d["f_matches_f_opt"]
-        end
-    end
-
-        @testset "one-to-one: Matrix" begin
-        for d in matchings_one_to_one
-            m_prefs, f_prefs = d["m_prefs"], d["f_prefs"]
 
             # Male proposal
             m_matches, f_matches = _deferred_acceptance(m_prefs, f_prefs)
