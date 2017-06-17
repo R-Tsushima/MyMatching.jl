@@ -6,7 +6,7 @@ function deferred_acceptance(m_prefs::Vector{Vector{Int}},f_prefs::Vector{Vector
     m_prp = ones(Int64,m_size)
     for j in 1:f_size
         for i in 1:m_size
-            if m_prp[i] > length(m_prefs[i])
+            if m_prefs[i][m_prp[i]] == 0
                 m_matched[i] = 0
             elseif m_matched[i] == 0 && m_prp[i] <= length(m_prefs[i])
                 if f_matched[m_prefs[i][m_prp[i]]] == 0
