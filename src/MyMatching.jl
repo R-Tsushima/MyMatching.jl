@@ -20,8 +20,8 @@ function deferred_acceptance(prop_prefs::Vector{Vector{Int}},
 
     for j in 1:n
         for i in 1:m
-            k = prop_prefs[i][count[i]]
             if prop_matched[i] == 0 && count[i] <= length(prop_prefs[i])
+                k = prop_prefs[i][count[i]]
                 if findfirst(resp_prefs[k], i) != 0
                     if accept[k] < caps[k]
                         resp_matched[indptr[k+1]-1 - accept[k]] = i
@@ -51,9 +51,9 @@ end
 function deferred_acceptance(prop_prefs::Vector{Vector{Int}},
                                 resp_prefs::Vector{Vector{Int}})
     caps = ones(Int, length(resp_prefs))
-    prop_matches, resp_matches, indptr =
+    prop_matched, resp_matched, indptr =
         deferred_acceptance(prop_prefs, resp_prefs, caps)
-    return prop_matches, resp_matches
+    return prop_matched, resp_matched
 end
 
 end
