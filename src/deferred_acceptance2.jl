@@ -25,6 +25,7 @@ function deferred_acceptance(prop_prefs::Vector{Vector{Int}},
                         accept[k]+=1
                     else
                         list = resp_matched[indptr[k]:indptr[k+1]-1]
+                        ranking = zeros(Int64,caps[k])
                         for l in 1:caps[k]
                             ranking[l] = findfirst(resp_prefs[prop_prefs[i][count[i]]], list[l])
                         end
