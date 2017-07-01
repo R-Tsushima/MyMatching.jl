@@ -31,10 +31,10 @@ function deferred_acceptance(prop_prefs::Vector{Vector{Int}},
                         list = resp_matched[indptr[k]:indptr[k+1]-1]
                         ranking = zeros(Int64,caps[k])
                         for l in 1:caps[k]
-                            ranking[l] = findfirst(resp_prefs[prop_prefs[i][count[i]]], list[l])
+                            ranking[l] = findfirst(resp_prefs[k], list[l])
                         end
-                        if 0 < findfirst(resp_prefs[prop_prefs[i][count[i]]], i) < maximum(ranking)
-                            resp_matched[indptr[k] + indmax(ranking) - 1]
+                        if 0 < findfirst(resp_prefs[k], i) < maximum(ranking)
+                            resp_matched[indptr[k] + indmax(ranking) - 1] = i
                             prop_matched[list[indmax(ranking)]] = 0
                             prop_matched[i] = k
                         end
