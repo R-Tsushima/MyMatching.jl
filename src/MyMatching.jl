@@ -34,18 +34,18 @@ function deferred_acceptance(prop_prefs::Vector{Vector{Int}},
                 k = prop_prefs[i][count[i]] #このラウンドでiが提案する相手k
                 if findfirst(resp_prefs[k], i) != 0
                     if accept[k] < r_caps[k]
-                        resp_matched[indptr[k+1]-1 - accept[k]] = i
+                        resp_matched[r_indptr[k+1]-1 - accept[k]] = i
                         prop_matched[p_indptr[i] + findfirst(p_list, 0) - 1] = k
                         accept[k]+=1
                     else
-                        list = resp_matched[indptr[k]:indptr[k+1]-1] #受入側kの保留相手のリスト
+                        list = resp_matched[r_indptr[k]:r_indptr[k+1]-1] #受入側kの保留相手のリスト
                         ranking = zeros(Int64,caps[k]) #リスト内での保留相手の順序とkのそれぞれの選好順位を対応させた
                         for l in 1:caps[k]
                             ranking[l] = findfirst(resp_prefs[k], list[l])
                         end
                         if 0 < findfirst(resp_prefs[k], i) < maximum(ranking)
                             d_list = prop_matched[p_indptr[indmax(ranking)]:p_indptr[indmax(ranking)+1]-1] #保留から外される提案側のマッチングリスト
-                            resp_matched[indptr[k] + indmax(ranking) - 1] = i
+                            resp_matched[r_indptr[k] + indmax(ranking) - 1] = i
                             prop_matched[p_indptr[indmax(ranking)] + findfirst(d_list, k) - 1] = 0
                             prop_matched[p_indptr[i] + findfirst(p_list, 0) - 1] = k
                         end
