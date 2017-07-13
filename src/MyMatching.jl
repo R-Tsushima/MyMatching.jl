@@ -44,9 +44,9 @@ function deferred_acceptance(prop_prefs::Vector{Vector{Int}},
                             ranking[l] = findfirst(resp_prefs[k], list[l])
                         end
                         if 0 < findfirst(resp_prefs[k], i) < maximum(ranking)
-                            d_list = prop_matched[p_indptr[indmax(ranking)]:p_indptr[indmax(ranking)+1]-1] #保留から外される提案側のマッチングリスト
+                            d_list = prop_matched[p_indptr[list[indmax(ranking)]]:p_indptr[list[indmax(ranking)]+1]-1] #保留から外される提案側のマッチングリスト
                             resp_matched[r_indptr[k] + indmax(ranking) - 1] = i
-                            prop_matched[p_indptr[indmax(ranking)] + findfirst(d_list, k) - 1] = 0
+                            prop_matched[p_indptr[list[indmax(ranking)]] + findfirst(d_list, k) - 1] = 0
                             prop_matched[p_indptr[i] + findfirst(p_list, 0) - 1] = k
                         end
                     end
