@@ -1,7 +1,3 @@
-module MyMatching
-
-export deferred_acceptance
-
 #many to many
 
 function deferred_acceptance(prop_prefs::Vector{Vector{Int}},
@@ -86,6 +82,4 @@ function deferred_acceptance(prop_prefs::Vector{Vector{Int}},
     prop_matched, resp_matched, p_indptr, r_indptr =
         deferred_acceptance(prop_prefs, resp_prefs, p_caps, r_caps)
     return prop_matched, resp_matched
-end
-
 end
