@@ -30,10 +30,10 @@ function deferred_acceptance(prop_prefs::Vector{Vector{Int}},
     for j in 1:n
         for i in 1:m
             p_list = prop_matched[p_indptr[i]:p_indptr[i+1]-1]
-            if prop_matched[i] == 0 && count[i] <= length(prop_prefs[i]) && findfirst(p_list, 0) != 0
+            if count[i] <= length(prop_prefs[i]) && findfirst(p_list, 0) != 0
                 k = prop_prefs[i][count[i]] #このラウンドでiが提案する相手k
                 if findfirst(resp_prefs[k], i) != 0
-                    if accept[k] < caps[k]
+                    if accept[k] < r_caps[k]
                         resp_matched[indptr[k+1]-1 - accept[k]] = i
                         prop_matched[p_indptr[i] + findfirst(p_list, 0) - 1] = k
                         accept[k]+=1
