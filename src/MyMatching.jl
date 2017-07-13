@@ -68,16 +68,6 @@ function deferred_acceptance(prop_prefs::Vector{Vector{Int}},
     return prop_matched, resp_matched, r_indptr
 end
 
-#one to many
-function deferred_acceptance(prop_prefs::Vector{Vector{Int}},
-                                resp_prefs::Vector{Vector{Int}},
-                                p_caps::Vector{Int})
-    r_caps = ones(Int, length(resp_prefs))
-    prop_matched, resp_matched, p_indptr, r_indptr =
-        deferred_acceptance(prop_prefs, resp_prefs, p_caps, r_caps)
-    return prop_matched, resp_matched, p_indptr
-end
-
 #one to one
 function deferred_acceptance(prop_prefs::Vector{Vector{Int}},
                                 resp_prefs::Vector{Vector{Int}})
