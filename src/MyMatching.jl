@@ -1,10 +1,10 @@
 module MyMatching
 
-export deferred_acceptance
+export my_deferred_acceptance
 
 #many to many
 
-function deferred_acceptance(prop_prefs::Vector{Vector{Int}},
+function my_deferred_acceptance(prop_prefs::Vector{Vector{Int}},
                              resp_prefs::Vector{Vector{Int}},
                              p_caps::Vector{Int},
                              r_caps::Vector{Int})
@@ -59,22 +59,22 @@ function deferred_acceptance(prop_prefs::Vector{Vector{Int}},
 end
 
 #many to one
-function deferred_acceptance(prop_prefs::Vector{Vector{Int}},
+function my_deferred_acceptance(prop_prefs::Vector{Vector{Int}},
                                 resp_prefs::Vector{Vector{Int}},
                                 r_caps::Vector{Int})
     p_caps = ones(Int, length(prop_prefs))
     prop_matched, resp_matched, p_indptr, r_indptr =
-        deferred_acceptance(prop_prefs, resp_prefs, p_caps, r_caps)
+        my_deferred_acceptance(prop_prefs, resp_prefs, p_caps, r_caps)
     return prop_matched, resp_matched, r_indptr
 end
 
 #one to one
-function deferred_acceptance(prop_prefs::Vector{Vector{Int}},
+function my_deferred_acceptance(prop_prefs::Vector{Vector{Int}},
                                 resp_prefs::Vector{Vector{Int}})
     p_caps = ones(Int, length(prop_prefs))
     r_caps = ones(Int, length(resp_prefs))
     prop_matched, resp_matched, p_indptr, r_indptr =
-        deferred_acceptance(prop_prefs, resp_prefs, p_caps, r_caps)
+        my_deferred_acceptance(prop_prefs, resp_prefs, p_caps, r_caps)
     return prop_matched, resp_matched
 end
 
