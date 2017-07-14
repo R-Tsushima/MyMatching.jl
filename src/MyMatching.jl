@@ -27,7 +27,7 @@ function my_deferred_acceptance(prop_prefs::Vector{Vector{Int}},
         r_indptr[i+1] = r_indptr[i] + r_caps[i]
     end
 
-    for j in 1:n
+    for j in 1:p_caps
         for i in 1:m
             p_list = prop_matched[p_indptr[i]:p_indptr[i+1]-1]
             if count[i] <= length(prop_prefs[i]) && findfirst(p_list, 0) != 0
