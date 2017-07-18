@@ -57,7 +57,7 @@ function my_deferred_acceptance(prop_prefs::Vector{Vector{Int}},
             end
         end
     end
-    return prop_matched, resp_matched, p_indptr, r_indptr
+    return prop_matched, resp_matched, p_indptr, r_indptr, p_count
 end
 
 #many to one
