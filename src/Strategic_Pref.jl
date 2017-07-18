@@ -25,9 +25,10 @@ function strategic_pref(m_prefs::Vector{Vector{Int}},
                 f_new_prefs[i] = false_prefs[j]
                 m_new_matched, f_new_matched = my_deferred_acceptance(m_prefs, f_new_prefs)
                 if findfirst(f_prefs, f_new_matched[i]) < findfirst(f_prefs, f_matched[i])
-                    results[i][j] = false_prefs[j]
+                    results[i, j] = false_prefs[j]
                 end
             end
         end
     end
+    return results
 end
