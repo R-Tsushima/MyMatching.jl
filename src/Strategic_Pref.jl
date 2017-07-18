@@ -4,7 +4,7 @@ function strategic_pref(m_prefs::Vector{Vector{Int}},
                         f_matched::Vector{Int},
                         P_count::Vector{Int},
                         no_f::Vector{Int},
-                        false_prefs::Vecotor{Vector{Int}})
+                        false_prefs::Vector{Vector{Int}})
     m = length(m_prefs)
     n = length(f_prefs)
     results = fill([0], (n, factorial(m)))
