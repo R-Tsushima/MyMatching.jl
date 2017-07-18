@@ -14,7 +14,7 @@ function my_deferred_acceptance(prop_prefs::Vector{Vector{Int}},
     resp_matched = zeros(Int64,sum(r_caps))
     count = ones(Int64,m) #提案側の提案回数
     accept = zeros(Int64,n) #受入側の受入人数
-    P_count = zeros(Int64,n) #受入側が提案された回数（選好順位の考察に使用）
+    p_count = zeros(Int64,n) #受入側が提案された回数（選好順位の考察に使用）
 
 #iがマッチングしたリストを表すための変数
     p_indptr = Array{Int}(m+1)
